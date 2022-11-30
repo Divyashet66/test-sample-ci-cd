@@ -8,5 +8,5 @@ profiles:
       kubeContext: gke_tech-rnd-project_us-central1-a_skaffold-cluster
       kubectl:
         manifests:
-          - template-master/k8/deployment.yaml
-          - template-master/k8/service.yaml
+          - template-master/template/k8/deployment.yaml
+          - template-master/template/k8/service.yaml
