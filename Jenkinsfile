@@ -13,9 +13,17 @@ pipeline {
 		    }
 	    }
 	    stage('Parse Config') {
-      config_data = sh(script: "jq '.' file.json", returnStdout: true).trim()
+			script{
+					config_data = sh(script: "jq '.' file.json", returnStdout: true).trim()
       // Convert the JSON string to a Groovy map
       def config = readJSON text: config_data
+
+	   env.PROJECT_ID = config.PROJECT_ID
+         env.CLUSTER_NAME = config.CLUSTER_NAME
+         env.LOCATION = config.LOCATION
+         env.CREDENTIALS_ID = config.CREDENTIALS_ID
+			}
+      
    }
 
    stage('Set Environment Variables') {
