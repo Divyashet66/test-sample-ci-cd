@@ -5,12 +5,12 @@ pipeline {
 		nodejs "NodeJS"
 	}
 	
-	environment {
-		PROJECT_ID = 'tech-rnd-project'
-                CLUSTER_NAME = 'network18-cluster'
-                LOCATION = 'us-central1-a'
-                CREDENTIALS_ID = 'kubernetes'	
-	}
+	// environment {
+	// 	PROJECT_ID = 'tech-rnd-project'
+    //             CLUSTER_NAME = 'network18-cluster'
+    //             LOCATION = 'us-central1-a'
+    //             CREDENTIALS_ID = 'kubernetes'	
+	// }
 	
     stages {
 	    stage('Scm Checkout') {
@@ -18,6 +18,21 @@ pipeline {
 			    	checkout scm
 		    }
 	    }
+
+		stage('Parse Config') {
+		// Read the config.json file and parse it using jq
+		config_data = sh(script: "jq '.' file.json", returnStdout: true).trim()
+		// Convert the JSON string to a Groovy map
+		def config = readJSON text: config_data
+   }
+
+   stage('Set Environment Variables') {
+      // Set the environment variables based on the values in the config file
+      env.PROJECT_ID = config.PROJECT_ID
+      env.CLUSTER_NAME = config.CLUSTER_NAME
+      env.LOCATION = config.LOCATION
+      env.CREDENTIALS_ID = config.CREDENTIALS_ID
+   }
 	    stage('build') {
               steps {
                   echo 'building the software'
