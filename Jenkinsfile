@@ -13,27 +13,17 @@ pipeline {
 		    }
 	    }
 	    stage('Parse Config') {
-			script{
-					config_data = sh(script: "jq '.' file.json", returnStdout: true).trim()
-      // Convert the JSON string to a Groovy map
-      def config = readJSON text: config_data
-
-	   env.PROJECT_ID = config.PROJECT_ID
+      steps {
+         // Read the config.json file and parse it using jq
+         sh "jq '. > config.tmp' file.json"
+         // Load the values from the temporary file into environment variables
+         def config = readFile 'config.tmp'
+         env.PROJECT_ID = config.PROJECT_ID
          env.CLUSTER_NAME = config.CLUSTER_NAME
          env.LOCATION = config.LOCATION
          env.CREDENTIALS_ID = config.CREDENTIALS_ID
-			}
-      
+      }
    }
-
-   stage('Set Environment Variables') {
-      // Set the environment variables based on the values in the config file
-      env.PROJECT_ID = config.PROJECT_ID
-      env.CLUSTER_NAME = config.CLUSTER_NAME
-      env.LOCATION = config.LOCATION
-      env.CREDENTIALS_ID = config.CREDENTIALS_ID
-   }
-	    
 	    stage('Deploy to K8s') {
 		    steps{
 			    echo "Deployment started ..."
