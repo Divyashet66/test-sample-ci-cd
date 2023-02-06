@@ -5,6 +5,12 @@ pipeline {
 		nodejs "NodeJS"
 	}
 	
+	environment {
+				PROJECT_ID = "tech-rnd-project"
+                CLUSTER_NAME = "network18-cluster"
+                LOCATION = "us-central1-a"
+                CREDENTIALS_ID = "kubernetes"	
+	}
 	
     stages {
 	    stage('Scm Checkout') {
@@ -12,18 +18,8 @@ pipeline {
 			    	checkout scm
 		    }
 	    }
-	    stage('Parse Config') {
-      steps {
-         // Read the config.json file and parse it using jq
-         sh "jq '. > config.tmp' file.json"
-         // Load the values from the temporary file into environment variables
-         def config = readFile 'config.tmp'
-         env.PROJECT_ID = config.PROJECT_ID
-         env.CLUSTER_NAME = config.CLUSTER_NAME
-         env.LOCATION = config.LOCATION
-         env.CREDENTIALS_ID = config.CREDENTIALS_ID
-      }
-   }
+	    
+	    
 	    stage('Deploy to K8s') {
 		    steps{
 			    echo "Deployment started ..."
@@ -31,7 +27,7 @@ pipeline {
 			    sh 'pwd'
 				
 				echo "Start deployment of deployment.yaml"
-				step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'k8', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+				step([$class: 'KubernetesEngineBuilder', projectId: "tech-rnd-project", clusterName: "network18-cluster", location: "us-central1-a", manifestPattern: 'k8', credentialsId: "kubernetes", verifyDeployments: true])
 			    	echo "Deployment Finished ..."
 			    sh '''
 			    '''
