@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: null
+        app: todo-app
     spec:
       containers:
         - name: todo-app
