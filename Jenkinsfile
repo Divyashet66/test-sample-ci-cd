@@ -6,10 +6,10 @@ pipeline {
 	}
 	
 	environment {
-				PROJECT_ID = "tech-rnd-project"
-                CLUSTER_NAME = "network18-cluster"
-                LOCATION = "us-central1-a"
-                CREDENTIALS_ID = "kubernetes"	
+		PROJECT_ID = "tech-rnd-project"
+		CLUSTER_NAME = "network18-cluster"
+		LOCATION = "us-central1-a"
+		CREDENTIALS_ID = "kubernetes"	
 	}
 	
     stages {
@@ -27,7 +27,7 @@ pipeline {
 			    sh 'pwd'
 				
 				echo "Start deployment of deployment.yaml"
-				step([$class: 'KubernetesEngineBuilder', projectId: "tech-rnd-project", clusterName: "network18-cluster", location: "us-central1-a", manifestPattern: 'k8', credentialsId: "kubernetes", verifyDeployments: true])
+			    step([$class: 'KubernetesEngineBuilder', projectId: ${PROJECT_ID}, clusterName: ${CLUSTER_NAME}, location: ${LOCATION}, manifestPattern: 'k8', credentialsId: ${CREDENTIALS_ID}, verifyDeployments: true])
 			    	echo "Deployment Finished ..."
 			    sh '''
 			    '''
