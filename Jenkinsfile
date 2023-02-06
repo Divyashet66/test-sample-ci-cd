@@ -27,7 +27,7 @@ pipeline {
 			    sh 'pwd'
 				
 				echo "Start deployment of deployment.yaml"
-			    step([$class: 'KubernetesEngineBuilder', projectId: ${PROJECT_ID}, clusterName: ${CLUSTER_NAME}, location: ${LOCATION}, manifestPattern: 'k8', credentialsId: ${CREDENTIALS_ID}, verifyDeployments: true])
+			    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'k8', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 			    	echo "Deployment Finished ..."
 			    sh '''
 			    '''
