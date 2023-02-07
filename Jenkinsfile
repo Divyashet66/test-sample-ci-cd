@@ -6,10 +6,10 @@ pipeline {
 	}
 	
 	environment {
-			PROJECT_ID = "tech-rnd-project"
-			CLUSTER_NAME = "network18-cluster"
-			LOCATION = "us-central1-a"
-			CREDENTIALS_ID = "kubernetes"	
+		        PROJECT_ID = project_id
+				CLUSTER_NAME = cluster_name
+				LOCATION = location_of_cluster
+				CREDENTIALS_ID = credentials_id	
 	
 	}
 	
@@ -35,12 +35,15 @@ pipeline {
 			    sh ' sudo apt update'
  			    sh 'sudo apt install software-properties-common -y'
 			    
+
+			    
+				    
 				sh 'sudo add-apt-repository ppa:cncf-buildpacks/pack-cli'
 			    
- 				sh 'sudo  apt-get update'
- 				sh 'sudo apt-get install pack-cli'
+ 				 sh 'sudo  apt-get update'
+ 				  sh 'sudo apt-get install pack-cli'
 			   
-				sh 'pack build todo -t gcr.io/tech-rnd-project/todo --builder paketobuildpacks/builder:full'
+				  sh 'pack build todo -t gcr.io/tech-rnd-project/todo --builder paketobuildpacks/builder:full'
 			    
 		    }
 	    }
