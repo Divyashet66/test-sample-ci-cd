@@ -10,7 +10,7 @@ pipeline {
 		        PROJECT_ID = "tech-rnd-project"
 				CLUSTER_NAME = "network18-cluster"
 				LOCATION = "us-central1-a"
-				CREDENTIALS_ID = "kubernetes"	
+				CREDENTIALS_ID = "kubernetes"		
 	}
 	
     stages {
