@@ -4,7 +4,7 @@ metadata:
   name: todo-app
 spec:
   ports:
-    - port: 3000
+    - port: 300
       targetPort: 3000
   type: LoadBalancer
   selector:
