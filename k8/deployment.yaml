@@ -16,4 +16,4 @@ spec:
         - name: todo-app
           image: "gcr.io/tech-rnd-project/todo"
           ports:
-            - containerPort: 3000
+            - containerPort: 4000
