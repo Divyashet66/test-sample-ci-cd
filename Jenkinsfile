@@ -30,7 +30,7 @@ pipeline {
 	    stage('Build Docker Image') {
 		    steps {
 			    sh 'whoami'
-			    sh 'echo "niveus@123" | sudo -S su
+			    sh 'echo "niveus@123" | sudo -S su'
 '
 			    sh 'chmod 777 /var/run/docker.sock
 '
