@@ -42,8 +42,8 @@ pipeline {
 			    
  				 sh 'sudo  apt-get update'
  				  sh 'sudo apt-get install pack-cli'
-			      sh 'pack build image_name --builder image_builder'
-				sh 'docker tag image_name gcr_image'
+			      sh 'pack build node --builder paketobuildpacks/builder:full'
+				sh 'docker tag node gcr.io/tech-rnd-project/node'
 			    
 		    }
 	    }
