@@ -7,10 +7,10 @@ pipeline {
 	
 	environment {
 		
-		        PROJECT_ID = "tech-rnd-project"
-				CLUSTER_NAME = "network18-cluster"
-				LOCATION = "us-central1-a"
-				CREDENTIALS_ID = "kubernetes"			
+		        PROJECT_ID = project_id
+				CLUSTER_NAME = cluster_name
+				LOCATION = location_of_cluster
+				CREDENTIALS_ID = credentials_id			
 	}
 	
     stages {
@@ -31,7 +31,6 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 			    sh 'sudo chmod 777 /var/run/docker.sock'
-'
 			    
 			    sh ' sudo apt update'
  			    sh 'sudo apt install software-properties-common -y'
@@ -43,8 +42,8 @@ pipeline {
 			    
  				 sh 'sudo  apt-get update'
  				  sh 'sudo apt-get install pack-cli'
-			      sh 'pack build node --builder paketobuildpacks/builder:full'
-				sh 'docker tag node gcr.io/tech-rnd-project/node'
+			      sh 'pack build image_name --builder image_builder'
+				sh 'docker tag image_name gcr_image'
 			    
 		    }
 	    }
@@ -54,7 +53,7 @@ pipeline {
 			    script {
 				    echo "Push Docker Image"
 				        sh 'gcloud auth configure-docker'
-				        sh "sudo docker push gcr.io/tech-rnd-project/node"
+				        sh "sudo docker push gcr_image"
 				    
 					sh 'curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl'
 
