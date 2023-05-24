@@ -13,7 +13,7 @@ spec:
         app: node-app
     spec:
       containers:
-        - name: v
+        - name: node-app
           image: "gcr.io/tech-rnd-project/node-app"
           ports:
             - containerPort: 3000
