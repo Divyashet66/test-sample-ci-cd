@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "network18-nodejs"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: network18-nodejs
+  template:
+    metadata:
+      labels:
+        app: network18-nodejs
+    spec:
+      containers:
+        - name: network18-nodejs
+          image: "gcr.io/inframod-nw18-host-poc/network18-nodejs"
+          ports:
+            - containerPort: 3000
