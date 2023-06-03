@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "node-js-network18"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-js-network18
+  template:
+    metadata:
+      labels:
+        app: node-js-network18
+    spec:
+      containers:
+        - name: node-js-network18
+          image: "gcr.io/inframod-nw18-svc-cnt-poc/node-js-network18"
+          ports:
+            - containerPort: 3000
