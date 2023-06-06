@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "node-app"
+  name: "nw18-poc"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: node-app
+      app: nw18-poc
   template:
     metadata:
       labels:
-        app: node-app
+        app: nw18-poc
     spec:
       containers:
-        - name: node-app
-          image: "gcr.io/inframod-nw18-svc-cnt-poc/nw18-nodejs-poc:latest"
+        - name: nw18-poc
+          image: "asia-south1-docker.pkg.dev/inframod-nw18-svc-cnt-poc/nw18-poc"
           ports:
             - containerPort: 3000
