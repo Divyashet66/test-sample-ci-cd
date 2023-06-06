@@ -7,10 +7,10 @@ pipeline {
 	
 	environment {
 		
-		        PROJECT_ID = "tech-rnd-project"
-				CLUSTER_NAME = "network18-cluster"
-				LOCATION = "us-central1-a"
-				CREDENTIALS_ID = "kubernetes"			
+		        PROJECT_ID = "inframod-nw18-svc-cnt-poc"
+				CLUSTER_NAME = "gke-nw18-prod-01"
+				LOCATION = "asia-south1-a"
+				CREDENTIALS_ID = "inframod-nw18-svc-cnt-poc"			
 	}
 	
     stages {
