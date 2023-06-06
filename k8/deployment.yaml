@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "node-private"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-private
+  template:
+    metadata:
+      labels:
+        app: node-private
+    spec:
+      containers:
+        - name: node-private
+          image: "us-central1-docker.pkg.dev/tech-rnd-project/network18/node-private"
+          ports:
+            - containerPort: 3000
