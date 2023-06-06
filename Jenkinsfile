@@ -42,8 +42,8 @@ pipeline {
 			    
  				 sh 'sudo  apt-get update'
  				  sh 'sudo apt-get install pack-cli'
-			      sh 'pack build nw18-nodejs-poc --builder paketobuildpacks/builder:full'
-				sh 'docker tag nw18-nodejs-poc gcr.io/inframod-nw18-svc-cnt-poc/nw18-nodejs-poc:latest'
+			      sh 'sudo pack build nw18-nodejs-poc --builder paketobuildpacks/builder:full'
+				sh 'sudo docker tag nw18-nodejs-poc gcr.io/inframod-nw18-svc-cnt-poc/nw18-nodejs-poc:latest'
 			    
 		    }
 	    }
