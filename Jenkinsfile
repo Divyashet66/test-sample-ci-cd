@@ -54,7 +54,6 @@ pipeline {
 				    echo "Push Docker Image"
 // 				    	sh 'gcloud auth list'
 // 				        sh 'gcloud auth configure-docker asia-south1-docker.pkg.dev'
-				        sh 'docker-credential-gcr configure-docker asia-south1-docker.pkg.dev'
 				        sh 'cat /home/prashant_c/keyfile.json | docker login -u _json_key_base64 --password-stdin https://asia-south1-docker.pkg.dev'
 				        sh 'docker push asia-south1-docker.pkg.dev/inframod-nw18-svc-cnt-poc/nw18-poc/nw18-poc:latest'
 					sh 'curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl'
