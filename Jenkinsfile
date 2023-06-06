@@ -52,6 +52,7 @@ pipeline {
 		    steps {
 			    script {
 				    echo "Push Docker Image"
+				    	sh "gcloud auth list"
 				        sh 'gcloud auth configure-docker'
 				        sh "sudo docker push gcr.io/tech-rnd-project/node-app"
 				    
