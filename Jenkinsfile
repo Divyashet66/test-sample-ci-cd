@@ -55,7 +55,8 @@ pipeline {
 				    	sh "sudo gcloud auth list"
 				        sh 'sudo gcloud auth configure-docker'
 				        sh 'sudo cat /home/prashant_c/keyfile.json | sudo docker login -u _json_key --password-stdin https://gcr.io'
-				        sh "sudo docker push gcr.io/inframod-nw18-svc-cnt-poc/nw18-nodejs-poc:latest"
+				        sh 'sudo cat /home/prashant_c/keyfile.json | sudo docker login -u _json_key --password-stdin https://gcr.io'
+				        #sh "sudo docker push gcr.io/inframod-nw18-svc-cnt-poc/nw18-nodejs-poc:latest"
 				    
 					sh 'curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl'
 
