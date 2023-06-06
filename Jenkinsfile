@@ -52,8 +52,9 @@ pipeline {
 		    steps {
 			    script {
 				    echo "Push Docker Image"
-				    	sh "sudo gcloud auth list"
-				        sh 'sudo cat /home/prashant_c/keyfile.json | sudo docker login -u _json_key --password-stdin https://gcr.io'
+// 				    	sh "sudo gcloud auth list"
+// 				        sh 'sudo cat /home/prashant_c/keyfile.json | sudo docker login -u _json_key --password-stdin https://gcr.io'
+				        sh "gcloud auth configure-docker asia-south1-docker.pkg.dev"
 				        sh 'sudo gcloud auth configure-docker'
 				        sh "sudo docker push asia-south1-docker.pkg.dev/inframod-nw18-svc-cnt-poc/nw18-poc/nw18-poc:latest"
 				    
