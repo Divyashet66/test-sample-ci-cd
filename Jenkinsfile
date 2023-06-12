@@ -52,7 +52,7 @@ pipeline {
 		    steps {
 			    script {
 				    echo "Push Docker Image"
-				        sh 'gcloud auth configure-docker'
+				        sh 'gcloud auth configure-docker us-central1-docker.pkg.dev'
 				        sh "sudo docker push us-central1-docker.pkg.dev/tech-rnd-project/network18-1"
 				    
 					sh 'curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl'
