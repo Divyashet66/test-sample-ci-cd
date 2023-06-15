@@ -8,9 +8,9 @@ pipeline {
 	environment {
 		
 		    PROJECT_ID = tech-rnd-project
-				CLUSTER_NAME = network18-cluster
-				LOCATION = us-central1-a
-				CREDENTIALS_ID = kubernetes			
+		    CLUSTER_NAME = network18-cluster
+	            LOCATION = us-central1-a
+		    CREDENTIALS_ID = kubernetes			
 	}
 	
     stages {
