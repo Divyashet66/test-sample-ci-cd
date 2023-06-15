@@ -71,8 +71,9 @@ pipeline {
 			    echo "Deployment started ..."
 			    sh 'ls -ltr'
 			    sh 'pwd'
-			    sh 'helm install demo1 helm'
 			    sh 'gcloud container clusters get-credentials network18-cluster --zone us-central1-a --project tech-rnd-project'
+			    
+			    sh 'helm install demo1 helm'
 				
 // 				echo "Start deployment of deployment.yaml"
 // 				step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment-folder', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
