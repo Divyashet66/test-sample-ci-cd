@@ -1,0 +1,12 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: null
+profiles:
+  - name: null
+    deploy:
+      kubeContext: null
+      kubectl:
+        manifests:
+          - k8/deployment.yaml
+          - k8/service.yaml
