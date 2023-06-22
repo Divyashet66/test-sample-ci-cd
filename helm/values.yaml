@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: us-central1-docker.pkg.dev/tech-rnd-project/network18/node
+  repository: us-central1-docker.pkg.dev/tech-rnd-project/network18/php
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "standard"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
