@@ -22,7 +22,9 @@ pipeline {
                 // Use Docker to build the PHP application
                 // Ensure Docker is installed on the Jenkins agent
                 script {
-                    docker.build("my-php-app:${env.BUILD_ID}", "-f Dockerfile .")
+                    // docker.build("my-php-app:${env.BUILD_ID}", "-f Dockerfile .")
+			sh "docker build -t php ."
+			sh "docker tag php us-central1-docker.pkg.dev/tech-rnd-project/network18/php"
                 }
             }
         }
