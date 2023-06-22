@@ -50,8 +50,8 @@ pipeline {
 			    sh 'ls -ltr'
 			    sh 'pwd'
 			    sh "gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${LOCATION} --project ${PROJECT_ID}"
-			    // sh 'helm install helm_chart_name helm'
-			    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment-folder', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+			    sh 'helm install php helm'
+			    // step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment-folder', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 			    echo "Deployment Finished ..."
 			    sh '''
 			    '''
